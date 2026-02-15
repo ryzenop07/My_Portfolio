@@ -36,8 +36,9 @@ export default function AdminPortfolioPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/portfolio', {
-        method: 'POST',
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
+      const response = await fetch(`${API_URL}/portfolio`, {
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
@@ -47,6 +48,7 @@ export default function AdminPortfolioPage() {
           title: 'Success',
           description: 'Portfolio updated successfully',
         });
+        window.location.reload();
       }
     } catch (error) {
       toast({
@@ -142,6 +144,19 @@ export default function AdminPortfolioPage() {
               rows={6}
               className="w-full px-4 py-2 bg-background border border-border rounded-lg text-foreground resize-none"
             />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-foreground mb-2">Profile Image URL</label>
+            <input
+              type="url"
+              name="profileImage"
+              value={formData.profileImage || ''}
+              onChange={handleChange}
+              placeholder="https://i.imgur.com/your-image.jpg"
+              className="w-full px-4 py-2 bg-background border border-border rounded-lg text-foreground"
+            />
+            <p className="text-xs text-foreground/60 mt-1">Upload your photo to imgur.com and paste the link here</p>
           </div>
 
           <Button type="submit" className="w-full">

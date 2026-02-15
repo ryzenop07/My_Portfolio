@@ -33,6 +33,7 @@ const defaultPortfolio: Portfolio = {
   email: 'prajapativishal273212@gmail.com',
   phone: '+91 9219057144',
   location: 'Gorakhpur, UP, India',
+  profileImage: 'https://i.imgur.com/YOUR_IMAGE_ID.jpg',
   socialLinks: {
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
