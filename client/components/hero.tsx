@@ -188,7 +188,8 @@ export function Hero({ portfolio }: HeroProps) {
                 <img
                   src={portfolio.profileImage}
                   alt={portfolio.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
+                  loading="eager"
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
