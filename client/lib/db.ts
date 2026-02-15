@@ -266,6 +266,24 @@ export function addCertificate(certificate: Certificate): Certificate {
   return certificate;
 }
 
+export function updateCertificate(id: string, data: Partial<Certificate>): Certificate | null {
+  const index = db.certificates.findIndex(c => c.id === id);
+  if (index !== -1) {
+    db.certificates[index] = { ...db.certificates[index], ...data };
+    return db.certificates[index];
+  }
+  return null;
+}
+
+export function deleteCertificate(id: string): boolean {
+  const index = db.certificates.findIndex(c => c.id === id);
+  if (index !== -1) {
+    db.certificates.splice(index, 1);
+    return true;
+  }
+  return false;
+}
+
 export function getAchievements(): Achievement[] {
   return db.achievements;
 }

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Trash2, Plus, Edit2 } from 'lucide-react';
-import { getCertificates, addCertificate, updateCertificate as dbUpdateCertificate, deleteCertificate } from '@/lib/db';
+import { getCertificates, addCertificate, updateCertificate, deleteCertificate } from '@/lib/db';
 
 interface Certificate {
   id: string;
@@ -32,7 +32,7 @@ export default function CertificatesManagePage() {
     e.preventDefault();
     
     if (editingId) {
-      const updated = dbUpdateCertificate(editingId, formData as any);
+      const updated = updateCertificate(editingId, formData as any);
       if (updated) {
         setCertificates(getCertificates());
       }
